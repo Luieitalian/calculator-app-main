@@ -16,7 +16,7 @@ Users should be able to:
 ### Links
 
 - [Solution URL](https://your-solution-url.com)
-- [Live Site URL](https://your-live-site-url.com)
+- [Live Site URL](https://luieitalian.github.io/calculator-app-main/)
 
 ### Built with
 
@@ -24,9 +24,9 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
-- [jQuery](https://reactjs.org/) - JS library
+- [jQuery](https://jquery.com/) - JS library
 
 
 ## Author
-- [Frontend Mentor](https://www.frontendmentor.io/profile/yourusername)
-- [Twitter](https://www.twitter.com/yourusername)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/Luieitalian)
+- [Twitter](https://www.twitter.com/Luieitalian)
