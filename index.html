@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+  <script src="jquery-3.6.3.min.js"></script>
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+    </style>
 </head>
+
 <body>
-
-
+  <main class="container">
+    <div class="top-section">
+      <div class="title">calc</div>
+      <div class="right">
+        <div class="c1-2-3">123</div>
+        <div class="theme-container">
+          <div class="theme">THEME</div>
+          <input class="button" type="radio" name="toggle" id="t1" checked="true"/>
+          <input class="button" type="radio" name="toggle" id="t2" checked="false"/>
+          <input class="button" type="radio" name="toggle" id="t3" checked="false"/>
+        </div>
+      </div>
+    </div>
+    <div id="result">
+      
+    </div>
+    <div class="keypad">
+      <div class="row-1">
+        <button id="seven">7</button>
+        <button id="eight">8</button>
+        <button id="nine">9</button>
+        <button id="del">DEL</button>
+      </div>
+      <div class="row-2">
+        <button id="four">4</button>
+        <button id="five">5</button>
+        <button id="six">6</button>
+        <button id="plus">+</button>
+      </div>
+      <div class="row-3">
+        <button id="one">1</button>
+        <button id="two">2</button>
+        <button id="three">3</button>
+        <button id="minus">-</button>
+      </div>
+      <div class="row-4">
+        <button id="dot">.</button>
+        <button id="zero">0</button>
+        <button id="division">/</button>
+        <button id="multiplication">x</button>
+      </div>
+      <div class="row-5">
+        <button id="reset">RESET</button>
+        <button id="equals">=</button>
+      </div>
+    </div>
+  </main>
+  
   
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Luieitalian</a>.
   </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
