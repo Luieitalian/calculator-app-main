@@ -3,8 +3,8 @@ function updateTheme1() {
 
     $('.top-section').css('color', 'hsl(0, 0%, 100%)');
 
-    $('.result').css('background-color', 'hsl(224, 36%, 15%)');
-    $('.result').css('color', 'hsl(0, 0%, 100%)');
+    $('#result').css('background-color', 'hsl(224, 36%, 15%)');
+    $('#result').css('color', 'hsl(0, 0%, 100%)');
 
     $('.keypad').css('background-color', 'hsl(223, 31%, 20%)');
 
@@ -31,8 +31,8 @@ function updateTheme2() {
 
     $('.top-section').css('color', 'hsl(60, 10%, 19%)');
 
-    $('.result').css('background-color', 'hsl(0, 0%, 93%)');
-    $('.result').css('color', 'hsl(60, 10%, 19%)');
+    $('#result').css('background-color', 'hsl(0, 0%, 93%)');
+    $('#result').css('color', 'hsl(60, 10%, 19%)');
 
     $('.keypad').css('background-color', 'hsl(0, 5%, 81%)');
 
@@ -60,8 +60,8 @@ function updateTheme3() {
 
     $('.top-section').css('color', 'hsl(52, 100%, 62%)');
 
-    $('.result').css('background-color', 'hsl(268, 71%, 12%)');
-    $('.result').css('color', 'hsl(52, 100%, 62%)');
+    $('#result').css('background-color', 'hsl(268, 71%, 12%)');
+    $('#result').css('color', 'hsl(52, 100%, 62%)');
 
     $('.keypad').css('background-color', 'hsl(268, 71%, 12%)');
 
@@ -89,31 +89,31 @@ function updateTheme3() {
 function setAttributeChecked(theme) {
     switch (theme) {
         case 1:
-            document.getElementById('one').setAttribute('checked', 'true');
-            document.getElementById('two').setAttribute('checked', 'false');
-            document.getElementById('three').setAttribute('checked', 'false');
+            document.getElementById('t1').setAttribute('checked', 'true');
+            document.getElementById('t2').setAttribute('checked', 'false');
+            document.getElementById('t3').setAttribute('checked', 'false');
             break;
         case 2:
-            document.getElementById('one').setAttribute('checked', 'false');
-            document.getElementById('two').setAttribute('checked', 'true');
-            document.getElementById('three').setAttribute('checked', 'false');
+            document.getElementById('t1').setAttribute('checked', 'false');
+            document.getElementById('t2').setAttribute('checked', 'true');
+            document.getElementById('t3').setAttribute('checked', 'false');
             break;
         case 3:
-            document.getElementById('one').setAttribute('checked', 'false');
-            document.getElementById('two').setAttribute('checked', 'false');
-            document.getElementById('three').setAttribute('checked', 'true');
+            document.getElementById('t1').setAttribute('checked', 'false');
+            document.getElementById('t2').setAttribute('checked', 'false');
+            document.getElementById('t3').setAttribute('checked', 'true');
             break;
     }
 }
 function setStorage() {
 
-    if (document.getElementById('one').checked) {
+    if (document.getElementById('t1').checked) {
         localStorage.setItem('theme', '1');
     }
-    else if (document.getElementById('two').checked) {
+    else if (document.getElementById('t2').checked) {
         localStorage.setItem('theme', '2');
     }
-    else if (document.getElementById('three').checked) {
+    else if (document.getElementById('t3').checked) {
         localStorage.setItem('theme', '3');
     }
 }
@@ -137,28 +137,89 @@ $(function () {
         updateTheme3();
     }
 
-    $('#one').click(function () {
+    $('#t1').click(function () {
         setAttributeChecked(1);
         setStorage();
         updateTheme1();
     });
-    $('#two').click(function () {
+    $('#t2').click(function () {
         setAttributeChecked(2);
         setStorage();
         updateTheme2();
     });
-    $('#three').click(function () {
+    $('#t3').click(function () {
         setAttributeChecked(3);
         setStorage();
         updateTheme3();
     });
 
 
+    // CALCULATOR
 
 
+    // GET ELEMENTS
+
+    const buttons = document.querySelectorAll('button');
+    const display = document.querySelector('#result');
+
+    // EVENTLISTENERS
+
+    let firstOperand = null;
+    let operator = null;
+    let currentOperand = '';
+
+    buttons.forEach((button) => {
+        button.addEventListener('click',(event) => {
+            const target = event.target;
+            const value = target.innerText;
+
+            if(target.id == 'reset'){
+                firstOperand = null;
+                operator = null;
+                currentOperand = '';
+                display.innerText = '';
+            }
+            else if (target.id == 'del'){
+                display.innerText = display.innerText.substring(0,display.innerText.length-1);
+                currentOperand = display.innerText;
+            }
+            else if (target.id == 'division' || target.id == 'multiplication'|| target.id == 'plus'|| target.id == 'minus'){
+                operator = value;
+                firstOperand = parseFloat(display.innerText);
+                currentOperand = '';
+            }
+            else if (target.id == 'equals') {
+                if(operator){
+                    const secondOperand = parseFloat(display.innerText);
+                    if(operator === '+'){
+                        firstOperand = firstOperand + secondOperand;
+                    }
+                    else if (operator === '-'){
+                        firstOperand = firstOperand - secondOperand;
+                    }
+                    else if (operator === 'x'){
+                        firstOperand = firstOperand * secondOperand;
+                    }
+                    else if (operator === '/'){
+                        firstOperand = firstOperand / secondOperand;
+                    }
+                    operator = null;
+                    currentOperand = firstOperand.toString();
+                    display.innerText = firstOperand;
+                }
+                
+            }
+            else if (value === '.' && currentOperand.includes('.')){
+                return
+            }
+            else {
+                currentOperand += value;
+                display.innerText = currentOperand;
+            }
+        })
 
 
-
+    });
 
 
 
