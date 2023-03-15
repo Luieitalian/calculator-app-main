@@ -13,7 +13,7 @@ Users should be able to:
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
 
 ## Screenshot
-- There is layouts for Tablets, Desktops and Mobile devices.
+- There are layouts for Tablets, Desktops and Mobile devices.
 
 ![](./screenshot.png)
 
