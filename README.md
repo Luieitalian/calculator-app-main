@@ -12,6 +12,10 @@ Users should be able to:
 - Adjust the color theme based on their preference
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
 
+## Screenshot
+- There is layouts for Tablets, Desktops and Mobile devices.
+
+![](./screenshot.png)
 
 ### Links
 
@@ -21,12 +25,17 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
 - Mobile-first workflow
-- [jQuery](https://reactjs.org/) - JS library
+- [jQuery](https://jquery.com/) - JS library
+
+
+## Useful resources
+
+- [Switch Bar Styling](https://moderncss.dev/pure-css-custom-styled-radio-buttons/) - This resource helped me style radio inputs.
+- [Calculator Algorithm](https://www.youtube.com/watch?v=wgBC-CUQEGs) - This video helped me so much coding the calculator. I also recommend this channel for ASMR purposes :P
 
 
 ## Author
-- [Frontend Mentor](https://www.frontendmentor.io/profile/yourusername)
-- [Twitter](https://www.twitter.com/yourusername)
+- [Frontend Mentor](https://www.frontendmentor.io/profile/Luieitalian)
+- [Twitter](https://www.twitter.com/luieitalian)

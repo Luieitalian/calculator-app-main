@@ -7,6 +7,8 @@ function updateTheme1() {
     $('#result').css('color', 'hsl(0, 0%, 100%)');
 
     $('.keypad').css('background-color', 'hsl(223, 31%, 20%)');
+    $('.switch').css('background-color', 'hsl(223, 31%, 20%)');
+    $('.circle').css('background-color', 'hsl(6, 63%, 50%)');
 
     $('.keypad > div > button').css('background-color', 'hsl(30, 25%, 89%)');
 
@@ -35,6 +37,8 @@ function updateTheme2() {
     $('#result').css('color', 'hsl(60, 10%, 19%)');
 
     $('.keypad').css('background-color', 'hsl(0, 5%, 81%)');
+    $('.switch').css('background-color', 'hsl(0, 5%, 81%)');
+    $('.circle').css('background-color', 'hsl(6, 63%, 50%)');
 
     $('.keypad > div > button').css('background-color', 'hsl(45, 7%, 89%)');
 
@@ -64,7 +68,8 @@ function updateTheme3() {
     $('#result').css('color', 'hsl(52, 100%, 62%)');
 
     $('.keypad').css('background-color', 'hsl(268, 71%, 12%)');
-
+    $('.switch').css('background-color', 'hsl(268, 71%, 12%)');
+    $('.circle').css('background-color', 'hsl(176, 100%, 44%)');
     $('.keypad > div > button').css('background-color', 'hsl(268, 47%, 21%)');
 
     $('.keypad > div > button').css('color', 'hsl(52, 100%, 62%)');
@@ -108,33 +113,50 @@ function setAttributeChecked(theme) {
 function setStorage() {
 
     if (document.getElementById('t1').checked) {
-        localStorage.setItem('theme', '1');
+        localStorage.setItem('prefers-color-scheme', '1');
     }
     else if (document.getElementById('t2').checked) {
-        localStorage.setItem('theme', '2');
+        localStorage.setItem('prefers-color-scheme', '2');
     }
     else if (document.getElementById('t3').checked) {
-        localStorage.setItem('theme', '3');
+        localStorage.setItem('prefers-color-scheme', '3');
+    }
+}
+function setSwitchCircle(pos) {
+    switch (pos) {
+        case 'left':
+            $('.circle').css('left', '55%');
+            break;
+        case 'middle':
+            $('.circle').css('left', '68%');
+            break;
+        case 'right':
+            $('.circle').css('left', '82%');
+            break;
     }
 }
 $(function () {
 
-    if (!localStorage.getItem('theme')) {
-        localStorage.setItem('theme', '1');
+    if (!localStorage.getItem('prefers-color-scheme')) {
+        localStorage.setItem('prefers-color-scheme', '1');
         setAttributeChecked(1);
         updateTheme1();
+        setSwitchCircle('left');
     }
-    else if (localStorage.getItem('theme') === '1') {
+    else if (localStorage.getItem('prefers-color-scheme') === '1') {
         setAttributeChecked(1);
         updateTheme1();
+        setSwitchCircle('left');
     }
-    else if (localStorage.getItem('theme') === '2') {
+    else if (localStorage.getItem('prefers-color-scheme') === '2') {
         setAttributeChecked(2);
         updateTheme2();
+        setSwitchCircle('middle');
     }
-    else if (localStorage.getItem('theme') === '3') {
+    else if (localStorage.getItem('prefers-color-scheme') === '3') {
         setAttributeChecked(3);
         updateTheme3();
+        setSwitchCircle('right');
     }
 
     $('#t1').click(function () {
@@ -154,6 +176,17 @@ $(function () {
     });
 
 
+    $('#t1').click((e) => {
+        $('.circle').animate({ left: '55%' },'fast')
+    });
+    $('#t2').click((e) => {
+        $('.circle').animate({ left: '68%' },'fast')
+    });
+    $('#t3').click((e) => {
+        $('.circle').animate({ left: '82%' },'fast')
+    });
+
+
     // CALCULATOR
 
 
@@ -169,47 +202,47 @@ $(function () {
     let currentOperand = '';
 
     buttons.forEach((button) => {
-        button.addEventListener('click',(event) => {
+        button.addEventListener('click', (event) => {
             const target = event.target;
             const value = target.innerText;
 
-            if(target.id == 'reset'){
+            if (target.id == 'reset') {
                 firstOperand = null;
                 operator = null;
                 currentOperand = '';
                 display.innerText = '';
             }
-            else if (target.id == 'del'){
-                display.innerText = display.innerText.substring(0,display.innerText.length-1);
+            else if (target.id == 'del') {
+                display.innerText = display.innerText.substring(0, display.innerText.length - 1);
                 currentOperand = display.innerText;
             }
-            else if (target.id == 'division' || target.id == 'multiplication'|| target.id == 'plus'|| target.id == 'minus'){
+            else if (target.id == 'division' || target.id == 'multiplication' || target.id == 'plus' || target.id == 'minus') {
                 operator = value;
                 firstOperand = parseFloat(display.innerText);
                 currentOperand = '';
             }
             else if (target.id == 'equals') {
-                if(operator){
+                if (operator) {
                     const secondOperand = parseFloat(display.innerText);
-                    if(operator === '+'){
+                    if (operator === '+') {
                         firstOperand = firstOperand + secondOperand;
                     }
-                    else if (operator === '-'){
+                    else if (operator === '-') {
                         firstOperand = firstOperand - secondOperand;
                     }
-                    else if (operator === 'x'){
+                    else if (operator === 'x') {
                         firstOperand = firstOperand * secondOperand;
                     }
-                    else if (operator === '/'){
+                    else if (operator === '/') {
                         firstOperand = firstOperand / secondOperand;
                     }
                     operator = null;
                     currentOperand = firstOperand.toString();
                     display.innerText = firstOperand;
                 }
-                
+
             }
-            else if (value === '.' && currentOperand.includes('.')){
+            else if (value === '.' && currentOperand.includes('.')) {
                 return
             }
             else {
@@ -222,6 +255,7 @@ $(function () {
     });
 
 
+ 
 
 
 
