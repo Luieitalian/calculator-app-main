@@ -19,7 +19,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29/hub)
+- [Solution URL](https://www.frontendmentor.io/solutions/responsive-calculator-app-with-theme-preferences-hwUsJNCrdW)
 - [Live Site URL](https://luieitalian.github.io/calculator-app-main/)
 
 ### Built with
